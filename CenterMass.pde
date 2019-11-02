@@ -8,9 +8,9 @@ ShapeBuilder masterbuilder;
 void setup(){
   size(800, 800);
   background(0);
-  stroke(0);
   mode = "FREE_MODE";
   rectMode(CENTER);
+  textAlign(CENTER, CENTER);
 }
 void draw(){
   fill(255);
@@ -18,29 +18,30 @@ void draw(){
     shape.display();
   }
   fill(255);
-  rect(width-75,height-50,75,50);
+  rect(width-75,height-50,80,50);
   fill(255,0,0);
-  textAlign(CENTER, CENTER);
   fill(0);
-  text("Circle",width-75,height-50,75,50);
+  text("Circle",width-75,height-50,80,50);
   
   fill(255);
-  rect(width-75,height-100,75,50);
+  rect(width-75,height-100,80,50);
   fill(255,0,0);
-  textAlign(CENTER, CENTER);
   fill(0);
-  text("Rectangle",width-75,height-100,75,50);
+  text("Rectangle",width-75,height-100,80,50);
   
 }
 void mousePressed() {
   if(mode.equals("FREE_MODE")){
-    int random1 = 200+ (int)(Math.random()*100);
-    random1 *= (random1%2==0) ? 1 : -1;
-    int random2 = 200+ (int)(Math.random()*100);
-    random2 *= (random2%2==0) ? 1 : -1;
-    Circle c = new Circle(random1,random2,50);
-    shapes.add(c);
-    
+    String shape = determineShape(mouseX,mouseY);
+    if(! shape.equals("Nothing")){
+      fill(255);
+      int random1 = 200+ (int)(Math.random()*100);
+      random1 *= (random1%2==0) ? 1 : -1;
+      int random2 = 200+ (int)(Math.random()*100);
+      random2 *= (random2%2==0) ? 1 : -1;
+      text(shape, random1,random2,80,50);
+    }
+    //masterbuilder = new ShapeBuilder(mouseX,mouseY,null);
   }
   else if(mode.equals("Building_Mode")){
     masterbuilder.numClicks += 1;
@@ -50,4 +51,13 @@ void mousePressed() {
       masterbuilder = null;
     }
   }
+}
+String determineShape(int x, int y){
+  if(y < height - 25 && y > height -75){
+    return "Circle";
+  }
+  else if(y < height - 75 && y > height -125){
+    return "Rectangle";
+  }
+  return "Nothing";
 }
