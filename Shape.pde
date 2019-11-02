@@ -8,5 +8,6 @@ abstract class Shape{
     this.y = y;
     this.area = calculateArea();
   }
+  abstract void display();
   abstract float calculateArea();
 }

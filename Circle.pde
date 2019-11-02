@@ -1,8 +1,14 @@
-class Circle{
-  int x;
-  int y;
+class Circle extends Shape{
   float radius;
   
-  int calculateArea(){
+  Circle(int x, int y, int radius){
+    super(x,y);
+    this.radius = radius;
+  }
+  float calculateArea(){
+    return 0;
+  }
+  void display(){
+    ellipse(x, y, radius*2, radius*2);
   }
 }
