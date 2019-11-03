@@ -6,7 +6,7 @@ class Circle extends Shape{
     this.radius = radius;
   }
   float calculateArea(){
-    return 0;
+    return radius * radius * PI;
   }
   void display(){
     ellipse(x, y, radius*2, radius*2);

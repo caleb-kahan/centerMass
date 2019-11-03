@@ -23,6 +23,16 @@ class ShapeBuilder{
           break;
         case "Rectangle":
           rect(mouseX,mouseY,5,5);
+          break;
+        case "Quarter_Circle":
+          arc(mouseX, mouseY, 5, 5, 0, HALF_PI);
+          break;
+        case "Semicircle":
+          arc(mouseX, mouseY, 5, 5, 0, PI);
+          break;
+        case "Ellipse":
+          ellipse(mouseX,mouseY,5,5);
+          break;
       }
     }
     if(numClicks ==1 ){
@@ -33,6 +43,18 @@ class ShapeBuilder{
           break;
         case "Rectangle":
           rect(firstX,firstY,2*(mouseX-firstX),2*(mouseY-firstY));
+          break;
+        case "Quarter_Circle":
+          if (mouseX - firstX < 0) arc(firstX, firstY, 2*dist, 2*dist, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) - QUARTER_PI + PI, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) + QUARTER_PI + PI);
+          else arc(firstX, firstY, 2*dist, 2*dist, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) - QUARTER_PI, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) + QUARTER_PI);
+          break;
+        case "Semicircle":
+          if (mouseX - firstX < 0) arc(firstX, firstY, 2*dist, 2*dist, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) - HALF_PI + PI, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) + HALF_PI + PI);
+          else arc(firstX, firstY, 2*dist, 2*dist, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) - HALF_PI, atan((mouseY - firstY)/(mouseX - firstX + 0.000001)) + HALF_PI);
+          break;
+        case "Ellipse":
+          ellipse(firstX,firstY,2*(mouseX-firstX),2*(mouseY-firstY));
+          break;
       }
     }
   }
