@@ -13,10 +13,15 @@ void setup(){
   textAlign(CENTER, CENTER);
 }
 void draw(){
+  background(0);
   fill(255);
   for (Shape shape : shapes) { 
     shape.display();
   }
+  if(mode.equals("Building_Mode")){
+    masterbuilder.run();
+  }
+  text(mode,500,500);
   fill(255);
   rect(width-75,height-50,80,50);
   fill(255,0,0);
@@ -34,18 +39,14 @@ void mousePressed() {
   if(mode.equals("FREE_MODE")){
     String shape = determineShape(mouseX,mouseY);
     if(! shape.equals("Nothing")){
-      fill(255);
-      int random1 = 200+ (int)(Math.random()*100);
-      random1 *= (random1%2==0) ? 1 : -1;
-      int random2 = 200+ (int)(Math.random()*100);
-      random2 *= (random2%2==0) ? 1 : -1;
-      text(shape, random1,random2,80,50);
+        masterbuilder = new ShapeBuilder(shape);
+        mode = "Building_Mode";
     }
-    //masterbuilder = new ShapeBuilder(mouseX,mouseY,null);
   }
   else if(mode.equals("Building_Mode")){
     masterbuilder.numClicks += 1;
-    boolean resetMode = masterbuilder.run();
+    masterbuilder.modify();
+    boolean resetMode = masterbuilder.shouldRun();
     if(resetMode){
       mode = "FREE_MODE";
       masterbuilder = null;
