@@ -72,6 +72,8 @@ void mousePressed() {
     boolean resetMode = masterbuilder.shouldRun();
     if (resetMode) {
       mode = "FREE_MODE";
+      Shape newShape = masterbuilder.build();
+      shapes.add(newShape);
       masterbuilder = null;
     }
   }

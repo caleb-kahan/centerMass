@@ -100,5 +100,13 @@ class ShapeBuilder{
     
     return true;
   }
+  Shape build(){
+    switch(futureShape){
+        case "Circle":
+        case "Rectangle":
+          return new Rectangle(firstX,firstY,secondX,secondY);
+    }
+   return null;
+  }
   
 }
