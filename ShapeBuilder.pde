@@ -65,9 +65,12 @@ class ShapeBuilder{
       }
     }
     if(numClicks == 2){
-      line(firstX, firstY, secondX, secondY);
-      line(firstX, firstY, mouseX, mouseY);
-      line(secondX, secondY, mouseX, mouseY);
+      fill(255);
+      beginShape(TRIANGLES);
+      vertex(firstX,firstY);
+      vertex(secondX,secondY);
+      vertex(mouseX,mouseY);
+      endShape();
     }
   }
   void modify(){
