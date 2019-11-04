@@ -15,6 +15,7 @@ void setup() {
 void draw() {
   background(0);
   fill(255);
+  stroke(255);
   for (Shape shape : shapes) { 
     shape.display();
   }
@@ -29,28 +30,34 @@ void draw() {
   text("Circle", width-40, height-50, 80, 50);
 
   fill(255);
-  rect(width-40, height-100, 80, 50);
+  rect(width-40, height-120, 80, 50);
   fill(255, 0, 0);
   fill(0);
-  text("Rectangle", width-40, height-100, 80, 50);
+  text("Rectangle", width-40, height-120, 80, 50);
 
   fill(255);
-  rect(width-120, height-50, 80, 50);
+  rect(width-140, height-50, 80, 50);
   fill(255, 0, 0);
   fill(0);
-  text("Quarter_Circle", width-120, height-50, 80, 50);
+  text("Quarter_Circle", width-140, height-50, 80, 50);
   
   fill(255);
-  rect(width-120, height-100, 80, 50);
+  rect(width-140, height-120, 80, 50);
   fill(255, 0, 0);
   fill(0);
-  text("Semicircle", width-120, height-100, 80, 50);
+  text("Semicircle", width-140, height-120, 80, 50);
   
   fill(255);
-  rect(width-200, height-100, 80, 50);
+  rect(width-240, height-120, 80, 50);
   fill(255, 0, 0);
   fill(0);
-  text("Ellipse", width-200, height-100, 80, 50);
+  text("Ellipse", width-240, height-120, 80, 50);
+  
+  fill(255);
+  rect(width-240, height-50, 80, 50);
+  fill(255, 0, 0);
+  fill(0);
+  text("Triangle", width-240, height-50, 80, 50);
 }
 void mousePressed() {
   if (mode.equals("FREE_MODE")) {
@@ -70,16 +77,18 @@ void mousePressed() {
   }
 }
 String determineShape(int x, int y) {
-  if (x > width - 80 && y < height - 25 && y > height -75) {
+  if (x > width - 100 && x < width - 20 && y < height - 25 && y > height -75) {
     return "Circle";
-  } else if (x > width - 80 && y < height - 75 && y > height -125) {
+  } else if (x > width - 100 && x < width - 20 && y < height - 95 && y > height -145) {
     return "Rectangle";
-  } else if (x > width - 160  && x < width - 80 && y < height - 25 && y > height -75) {
+  } else if (x > width - 180  && x < width - 100 && y < height - 25 && y > height -75) {
     return "Quarter_Circle";
-  } else if (x > width - 160  && x < width - 80 && y < height - 75 && y > height -125) {
+  } else if (x > width - 180  && x < width - 100 && y < height - 95 && y > height -145) {
     return "Semicircle";
-  } else if (x > width - 240  && x < width - 160 && y < height - 75 && y > height -125) {
+  } else if (x > width - 280  && x < width - 200 && y < height - 95 && y > height -145) {
     return "Ellipse";
+  } else if (x > width - 280  && x < width - 200 && y < height - 25 && y > height -75) {
+    return "Triangle";
   }
   return "Nothing";
 }

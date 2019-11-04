@@ -17,6 +17,7 @@ class ShapeBuilder{
   void run(){
     if(numClicks == 0){
       fill(255,0,0);
+      stroke(255);
       switch(futureShape){
         case "Circle":
           circle(mouseX,mouseY,5);
@@ -32,6 +33,9 @@ class ShapeBuilder{
           break;
         case "Ellipse":
           ellipse(mouseX,mouseY,5,5);
+          break;
+        case "Triangle":
+          line(mouseX, mouseY, mouseX + 5, mouseY + 5);
           break;
       }
     }
@@ -55,13 +59,25 @@ class ShapeBuilder{
         case "Ellipse":
           ellipse(firstX,firstY,2*(mouseX-firstX),2*(mouseY-firstY));
           break;
+        case "Triangle":
+          line(firstX, firstY, mouseX, mouseY);
+          break;
       }
+    }
+    if(numClicks == 2){
+      line(firstX, firstY, secondX, secondY);
+      line(firstX, firstY, mouseX, mouseY);
+      line(secondX, secondY, mouseX, mouseY);
     }
   }
   void modify(){
     if(numClicks ==1){
       firstX = mouseX;
       firstY = mouseY;
+    }
+    if(numClicks ==2){
+      secondX = mouseX;
+      secondY = mouseY;
     }
   }
   float distance(int x1, int y1, int x2, int y2){
@@ -73,6 +89,9 @@ class ShapeBuilder{
     }
     
     else if(numClicks == 1){
+      return false;
+    }
+    else if(numClicks == 2 && futureShape.equals("Triangle")){
       return false;
     }
     
