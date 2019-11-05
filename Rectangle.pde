@@ -11,6 +11,13 @@ class Rectangle extends Shape{
     return w * h;
   }
   void display(){
+    stroke(255, 0, 0);
     rect(x, y, w, h);
+  }
+  float calculateCenterX(){
+    return x;
+  }
+  float calculateCenterY(){
+    return y;
   }
 }

@@ -76,6 +76,7 @@ class ShapeBuilder{
     }
     if(numClicks == 2){
       fill(255);
+      stroke(255, 0, 0);
       beginShape(TRIANGLES);
       vertex(firstX,firstY);
       vertex(secondX,secondY);

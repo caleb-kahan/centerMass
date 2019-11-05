@@ -11,6 +11,13 @@ class Ellipse extends Shape{
     return w * h * PI;
   }
   void display(){
+    stroke(255, 0, 0);
     ellipse(x, y, w*2, h*2);
+  }
+  float calculateCenterX(){
+    return x;
+  }
+  float calculateCenterY(){
+    return y;
   }
 }
