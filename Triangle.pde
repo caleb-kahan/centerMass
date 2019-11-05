@@ -15,8 +15,10 @@ class Triangle extends Shape{
     return abs(x * (y1 - y2) + x1* (y2 - y) + x2 * (y - y1)) /2;
   }
   void display(){
-    line(x, y, x1, x1);
-    line(x2, y2, x1, y1);
-    line(x, y, x2, y2);
+    beginShape(TRIANGLES);
+    vertex(x,y);
+    vertex(x1,y1);
+    vertex(x2,y2);
+    endShape();
   }
 }

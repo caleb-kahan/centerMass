@@ -3,8 +3,8 @@ class ShapeBuilder{
   int firstY;
   int secondX;
   int secondY;
-  int threeX;
-  int threeY;
+  int thirdX;
+  int thirdY;
   String futureShape;
   int numClicks;
   
@@ -82,6 +82,11 @@ class ShapeBuilder{
       secondX = mouseX;
       secondY = mouseY;
     }
+    if(numClicks ==3){
+      thirdX = mouseX;
+      thirdY = mouseY;
+    }
+    
   }
   float distance(int x1, int y1, int x2, int y2){
     return sqrt(sq(x2-x1) + sq(y2-y1));
@@ -106,6 +111,8 @@ class ShapeBuilder{
           return new Circle(firstX,firstY,dist(firstX,firstY,secondX,secondY));
         case "Rectangle":
           return new Rectangle(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
+        case "Triangle":
+          return new Triangle(firstX,firstY,secondX,secondY,thirdX,thirdY);
     }
    return null;
   }
