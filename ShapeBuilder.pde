@@ -125,11 +125,13 @@ class ShapeBuilder{
         case "Triangle":
           return new Triangle(firstX,firstY,secondX,secondY,thirdX,thirdY);
         case "Ellipse":
-          return new Ellipse(firstX,firstY,secondX-firstX,secondY-firstY);
+          return new Ellipse(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
         case "Semicircle":
-          return new Semicircle(firstX,firstY,dist(firstX,firstY,secondX,secondY)*2,secondX,secondY);
+          return new Semicircle(firstX,firstY,dist(firstX,firstY,secondX,secondY),secondX,secondY);
         case "Quarter_Circle":
-          return new Quarter_Circle(firstX,firstY,dist(firstX,firstY,secondX,secondY)*2,secondX,secondY);
+          return new Quarter_Circle(firstX,firstY,dist(firstX,firstY,secondX,secondY),secondX,secondY);
+        case "CircSegment":
+          return new CircSegment((firstX + secondY - firstY + secondX)/2,(firstX + secondY + firstY - secondX)/2,dist(firstX,firstY,secondX,secondY)/sqrt(2),firstX,firstY,secondX,secondY);
     }
    return null;
   }

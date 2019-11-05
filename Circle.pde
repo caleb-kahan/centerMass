@@ -1,7 +1,7 @@
 class Circle extends Shape{
   float radius;
   
-  Circle(int x, int y, float radius){
+  Circle(float x, float y, float radius){
     super(x,y);
     this.radius = radius;
   }

@@ -1,9 +1,9 @@
 abstract class Shape{
-  int x;
-  int y;
+  float x;
+  float y;
   float area; 
   
-  Shape(int x,int y){
+  Shape(float x,float y){
     this.x = x;
     this.y = y;
     this.area = calculateArea();

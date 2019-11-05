@@ -4,7 +4,7 @@ class Semicircle extends Shape{
   int secondY;
   float angle;
   
-  Semicircle(int x, int y, float radius, int secondX, int secondY){
+  Semicircle(float x, float y, float radius, int secondX, int secondY){
     super(x,y);
     this.radius = radius;
     this.secondX = secondX;
@@ -16,8 +16,8 @@ class Semicircle extends Shape{
   }
   void display(){
     stroke(255, 0, 0);
-    if (secondX - x < 0) arc(x, y, radius, radius, angle - HALF_PI + PI, angle + HALF_PI + PI);
-    else arc(x, y, radius, radius, angle - HALF_PI, angle + HALF_PI);
+    if (secondX - x < 0) arc(x, y, 2*radius, 2*radius, angle - HALF_PI + PI, angle + HALF_PI + PI);
+    else arc(x, y, 2*radius, 2*radius, angle - HALF_PI, angle + HALF_PI);
   }
   float calculateCenterX(){
     return 4 * radius / 3 / PI * cos(angle);

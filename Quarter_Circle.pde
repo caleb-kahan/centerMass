@@ -4,7 +4,7 @@ class Quarter_Circle extends Shape{
   int secondY;
   float angle;
   
-  Quarter_Circle(int x, int y, float radius, int secondX, int secondY){
+  Quarter_Circle(float x, float y, float radius, int secondX, int secondY){
     super(x,y);
     this.radius = radius;
     this.secondX = secondX;
@@ -16,8 +16,8 @@ class Quarter_Circle extends Shape{
   }
   void display(){
     stroke(255, 0, 0);
-    if (secondX - x < 0) arc(x, y, radius, radius, angle - QUARTER_PI + PI, angle + QUARTER_PI + PI);
-    else arc(x, y, radius, radius, angle - QUARTER_PI, angle + QUARTER_PI);
+    if (secondX - x < 0) arc(x, y, 2*radius, 2*radius, angle - QUARTER_PI + PI, angle + QUARTER_PI + PI);
+    else arc(x, y, 2*radius, 2*radius, angle - QUARTER_PI, angle + QUARTER_PI);
   }
   float calculateCenterX(){
     return 4 * radius / 3 / PI * sqrt(2) * cos(angle);
