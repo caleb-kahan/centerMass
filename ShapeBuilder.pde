@@ -69,13 +69,14 @@ class ShapeBuilder{
           float r = dist / sqrt(2);
           float xc = (firstX + mouseY - firstY + mouseX)/2;
           float yc = (firstX + mouseY + firstY - mouseX)/2;
-          if (mouseX - firstX < 0) arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI + HALF_PI, CHORD);
-          else arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc + 0.000001)), atan((mouseY - yc)/(mouseX - xc + 0.000001)) + HALF_PI, CHORD);
+          if (mouseX - xc < 0) arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc )) + PI, atan((mouseY - yc)/(mouseX - xc)) + PI + HALF_PI, CHORD);
+          else arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc)), atan((mouseY - yc)/(mouseX - xc )) + HALF_PI, CHORD);
           break;
       }
     }
     if(numClicks == 2){
       fill(255);
+      stroke(255, 0, 0);
       beginShape(TRIANGLES);
       vertex(firstX,firstY);
       vertex(secondX,secondY);
@@ -124,11 +125,13 @@ class ShapeBuilder{
         case "Triangle":
           return new Triangle(firstX,firstY,secondX,secondY,thirdX,thirdY);
         case "Ellipse":
-          return new Ellipse(firstX,firstY,secondX-firstX,secondY-firstY);
+          return new Ellipse(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
         case "Semicircle":
-          return new Semicircle(firstX,firstY,dist(firstX,firstY,secondX,secondY)*2,secondX,secondY);
+          return new Semicircle(firstX,firstY,dist(firstX,firstY,secondX,secondY),secondX,secondY);
         case "Quarter_Circle":
-          return new Quarter_Circle(firstX,firstY,dist(firstX,firstY,secondX,secondY)*2,secondX,secondY);
+          return new Quarter_Circle(firstX,firstY,dist(firstX,firstY,secondX,secondY),secondX,secondY);
+        case "CircSegment":
+          return new CircSegment((firstX + secondY - firstY + secondX)/2,(firstX + secondY + firstY - secondX)/2,dist(firstX,firstY,secondX,secondY)/sqrt(2),firstX,firstY,secondX,secondY);
     }
    return null;
   }

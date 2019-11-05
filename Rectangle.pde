@@ -2,7 +2,7 @@ class Rectangle extends Shape{
   float w;
   float h;
   
-  Rectangle(int x, int y, int w, int h){
+  Rectangle(float x, float y, int w, int h){
     super(x,y);
     this.w = w;
     this.h = h;
@@ -11,6 +11,13 @@ class Rectangle extends Shape{
     return w * h;
   }
   void display(){
+    stroke(255, 0, 0);
     rect(x, y, w, h);
+  }
+  float calculateCenterX(){
+    return x;
+  }
+  float calculateCenterY(){
+    return y;
   }
 }
