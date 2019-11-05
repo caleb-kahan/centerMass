@@ -104,7 +104,7 @@ class ShapeBuilder{
     switch(futureShape){
         case "Circle":
         case "Rectangle":
-          return new Rectangle(firstX,firstY,secondX,secondY);
+          return new Rectangle(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
     }
    return null;
   }
