@@ -16,9 +16,9 @@ class Rectangle extends Shape{
   }
   float angle(float x, float y, float rotateX, float rotateY){
     if(rotateX-x>0)
-      return atan((rotateY-y+0.000001)/(rotateX-x+0.0000001));
+      return atan((rotateY-y)/(rotateX-x+0.0000001));
     else
-      return atan((rotateY-y+0.0000001)/(rotateX-x+0.0000001)) + PI;
+      return atan((rotateY-y)/(rotateX-x+0.0000001)) + PI;
   }
   void display(){
     stroke(255, 0, 0);
