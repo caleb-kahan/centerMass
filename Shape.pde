@@ -10,4 +10,6 @@ abstract class Shape{
   }
   abstract void display();
   abstract float calculateArea();
+  abstract float calculateCenterX();
+  abstract float calculateCenterY();
 }
