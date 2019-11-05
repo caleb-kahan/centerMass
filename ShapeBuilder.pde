@@ -69,8 +69,8 @@ class ShapeBuilder{
           float r = dist / sqrt(2);
           float xc = (firstX + mouseY - firstY + mouseX)/2;
           float yc = (firstX + mouseY + firstY - mouseX)/2;
-          if (mouseX - firstX < 0) arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI + HALF_PI, CHORD);
-          else arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc + 0.000001)), atan((mouseY - yc)/(mouseX - xc + 0.000001)) + HALF_PI, CHORD);
+          if (mouseX - xc < 0) arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc )) + PI, atan((mouseY - yc)/(mouseX - xc)) + PI + HALF_PI, CHORD);
+          else arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc)), atan((mouseY - yc)/(mouseX - xc )) + HALF_PI, CHORD);
           break;
       }
     }
