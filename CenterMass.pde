@@ -58,6 +58,12 @@ void draw() {
   fill(255, 0, 0);
   fill(0);
   text("Triangle", width-240, height-50, 80, 50);
+  
+  fill(255);
+  rect(width-340, height-50, 80, 50);
+  fill(255, 0, 0);
+  fill(0);
+  text("CircSegment", width-340, height-50, 80, 50);
 }
 void mousePressed() {
   if (mode.equals("FREE_MODE")) {
@@ -91,6 +97,8 @@ String determineShape(int x, int y) {
     return "Ellipse";
   } else if (x > width - 280  && x < width - 200 && y < height - 25 && y > height -75) {
     return "Triangle";
+  } else if (x > width - 380  && x < width - 300 && y < height - 25 && y > height -75) {
+    return "CircSegment";
   }
   return "Nothing";
 }

@@ -37,6 +37,9 @@ class ShapeBuilder{
         case "Triangle":
           line(mouseX, mouseY, mouseX + 5, mouseY + 5);
           break;
+        case "CircSegment":
+          arc(mouseX, mouseY, 5, 5, 0, HALF_PI, CHORD);
+          break;
       }
     }
     if(numClicks ==1 ){
@@ -61,6 +64,13 @@ class ShapeBuilder{
           break;
         case "Triangle":
           line(firstX, firstY, mouseX, mouseY);
+          break;
+        case "CircSegment":
+          float r = dist / sqrt(2);
+          float xc = (firstX + mouseY - firstY + mouseX)/2;
+          float yc = (firstX + mouseY + firstY - mouseX)/2;
+          if (mouseX - firstX < 0) arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI + HALF_PI, CHORD);
+          else arc(xc, yc, 2 * r, 2 * r, atan((mouseY - yc)/(mouseX - xc + 0.000001)), atan((mouseY - yc)/(mouseX - xc + 0.000001)) + HALF_PI, CHORD);
           break;
       }
     }
