@@ -17,7 +17,7 @@ class ShapeBuilder{
   void run(){
     if(numClicks == 0){
       fill(255,0,0);
-      stroke(255);
+      stroke(255, 0, 0);
       switch(futureShape){
         case "Circle":
           circle(mouseX,mouseY,5);

@@ -10,6 +10,9 @@ class Ellipse extends Shape{
     this.h = h;
     this.rotateX = rotateX;
     this.rotateY = rotateY;
+    this.comX = calculateCenterX();
+    this.comY = calculateCenterY();
+    this.area = calculateArea();
   }
   float calculateArea(){
     return w/2 * h/2 * PI;
@@ -28,6 +31,7 @@ class Ellipse extends Shape{
     translate(-x,-y);
     ellipse(x, y, w, h);
     popMatrix();
+    super.display();
   }
   float calculateCenterX(){
     return x;

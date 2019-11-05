@@ -17,7 +17,7 @@ void draw() {
   background(0);
   image(img, 0, 0, 559*1.1,477*1.1);
   fill(255);
-  stroke(255);
+  stroke(255, 0, 0);
   for (Shape shape : shapes) { 
     shape.display();
   }

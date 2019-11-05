@@ -10,6 +10,9 @@ class Triangle extends Shape{
     this.y1 = y1;
     this.x2 = x2;
     this.y2 = y2;
+    this.comX = calculateCenterX();
+    this.comY = calculateCenterY();
+    this.area = calculateArea();
   }
   float calculateArea(){
     return abs(x * (y1 - y2) + x1 * (y2 - y) + x2 * (y - y1)) /2;
@@ -21,6 +24,7 @@ class Triangle extends Shape{
     vertex(x1,y1);
     vertex(x2,y2);
     endShape();
+    super.display();
   }
   float calculateCenterX(){
     return (x + x1 + x2)/3.;

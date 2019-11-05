@@ -10,6 +10,9 @@ class Rectangle extends Shape{
     this.h = h;
     this.rotateX = rotateX;
     this.rotateY = rotateY;
+    this.comX = calculateCenterX();
+    this.comY = calculateCenterY();
+    this.area = calculateArea();
   }
   float calculateArea(){
     return w * h;
@@ -28,6 +31,7 @@ class Rectangle extends Shape{
     translate(-x,-y);
     rect(x,y,w,h);
     popMatrix();
+    super.display();
   }
   float calculateCenterX(){
     return x;
