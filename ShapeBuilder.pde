@@ -75,13 +75,31 @@ class ShapeBuilder{
       }
     }
     if(numClicks == 2){
-      fill(255);
-      stroke(255, 0, 0);
-      beginShape(TRIANGLES);
-      vertex(firstX,firstY);
-      vertex(secondX,secondY);
-      vertex(mouseX,mouseY);
-      endShape();
+      switch(futureShape){
+        case "Triangle":
+          fill(255);
+          stroke(255, 0, 0);
+          beginShape(TRIANGLES);
+          vertex(firstX,firstY);
+          vertex(secondX,secondY);
+          vertex(mouseX,mouseY);
+          endShape();
+        case "Rectangle":
+          pushMatrix();
+          translate(firstX,firstY);
+          rotate(angle(firstX,firstY));
+          translate(-firstX,-firstY);
+          rect(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
+          popMatrix();
+        case "Ellipse":
+          pushMatrix();
+          translate(firstX,firstY);
+          rotate(angle(firstX,firstY));
+          translate(-firstX,-firstY);
+          ellipse(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
+          popMatrix();
+
+      }
     }
   }
   void modify(){
@@ -110,7 +128,9 @@ class ShapeBuilder{
     else if(numClicks == 1){
       return false;
     }
-    else if(numClicks == 2 && futureShape.equals("Triangle")){
+    else if(numClicks == 2 && (futureShape.equals("Triangle") ||
+                               futureShape.equals("Rectangle") || 
+                               futureShape.equals("Ellipse"))){
       return false;
     }
     
@@ -121,11 +141,11 @@ class ShapeBuilder{
         case "Circle":
           return new Circle(firstX,firstY,dist(firstX,firstY,secondX,secondY));
         case "Rectangle":
-          return new Rectangle(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
+          return new Rectangle(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY),thirdX,thirdY);
         case "Triangle":
           return new Triangle(firstX,firstY,secondX,secondY,thirdX,thirdY);
         case "Ellipse":
-          return new Ellipse(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
+          return new Ellipse(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY),thirdX,thirdY);
         case "Semicircle":
           return new Semicircle(firstX,firstY,dist(firstX,firstY,secondX,secondY),secondX,secondY);
         case "Quarter_Circle":
@@ -134,6 +154,12 @@ class ShapeBuilder{
           return new CircSegment((firstX + secondY - firstY + secondX)/2,(firstX + secondY + firstY - secondX)/2,dist(firstX,firstY,secondX,secondY)/sqrt(2),firstX,firstY,secondX,secondY);
     }
    return null;
+  }
+  float angle(float x, float y){
+    if(mouseX-x>0)
+      return atan((mouseY-y+0.000001)/(mouseX-x+0.0000001));
+    else
+      return atan((mouseY-y+0.0000001)/(mouseX-x+0.0000001)) + PI;
   }
   
 }

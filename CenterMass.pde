@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-
+PImage img;
 String mode;
 ArrayList<Shape> shapes = new ArrayList<Shape>();
 ShapeBuilder masterbuilder;
@@ -11,9 +11,11 @@ void setup() {
   mode = "FREE_MODE";
   rectMode(CENTER);
   textAlign(CENTER, CENTER);
+  img = loadImage("snakemaster.png");
 }
 void draw() {
   background(0);
+  image(img, 0, 0, 559*1.1,477*1.1);
   fill(255);
   stroke(255);
   for (Shape shape : shapes) { 
