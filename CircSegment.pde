@@ -22,4 +22,10 @@ class CircSegment extends Shape{
     if (mouseX - firstX < 0) arc(xc, yc, 2 * radius, 2 * radius, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI, atan((mouseY - yc)/(mouseX - xc + 0.000001)) + PI + HALF_PI, CHORD);
     else arc(xc, yc, 2 * radius, 2 * radius, atan((mouseY - yc)/(mouseX - xc + 0.000001)), atan((mouseY - yc)/(mouseX - xc + 0.000001)) + HALF_PI, CHORD);
   }
+  float calculateCenterX(){
+    return 0.;
+  }
+  float calculateCenterY(){
+    return 0.;
+  }
 }

@@ -15,10 +15,17 @@ class Triangle extends Shape{
     return abs(x * (y1 - y2) + x1* (y2 - y) + x2 * (y - y1)) /2;
   }
   void display(){
+    stroke(255, 0, 0);
     beginShape(TRIANGLES);
     vertex(x,y);
     vertex(x1,y1);
     vertex(x2,y2);
     endShape();
+  }
+  float calculateCenterX(){
+    return (x + x1 + x2)/3.;
+  }
+  float calculateCenterY(){
+    return (y + y1 + y2)/3.;
   }
 }
