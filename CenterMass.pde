@@ -66,11 +66,20 @@ void draw() {
   fill(255, 0, 0);
   fill(0);
   text("CircSegment", width-340, height-50, 80, 50);
+  
+  fill(0,255,0);
+  rect(width-340, height-120, 80, 50);
+  fill(255, 0, 0);
+  fill(0);
+  text("UNDO", width-340, height-120, 80, 50);
 }
 void mousePressed() {
   if (mode.equals("FREE_MODE")) {
     String shape = determineShape(mouseX, mouseY);
-    if (! shape.equals("Nothing")) {
+    if(shape.equals("UNDO") && shapes.size()>0){
+      shapes.remove(shapes.size() - 1);
+    }
+    else if (! shape.equals("Nothing")) {
       masterbuilder = new ShapeBuilder(shape);
       mode = "Building_Mode";
     }
@@ -101,6 +110,8 @@ String determineShape(int x, int y) {
     return "Triangle";
   } else if (x > width - 380  && x < width - 300 && y < height - 25 && y > height -75) {
     return "CircSegment";
+  } else if (x > width - 380  && x < width - 300 && y < height - 95 && y > height -145) {
+    return "UNDO";
   }
   return "Nothing";
 }

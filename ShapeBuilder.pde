@@ -84,6 +84,7 @@ class ShapeBuilder{
           vertex(secondX,secondY);
           vertex(mouseX,mouseY);
           endShape();
+          break;
         case "Rectangle":
           pushMatrix();
           translate(firstX,firstY);
@@ -91,6 +92,7 @@ class ShapeBuilder{
           translate(-firstX,-firstY);
           rect(firstX,firstY,2*(secondX-firstX),2*(secondY-firstY));
           popMatrix();
+          break;
         case "Ellipse":
           pushMatrix();
           translate(firstX,firstY);
